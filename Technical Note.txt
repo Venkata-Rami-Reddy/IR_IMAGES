@@ -1,0 +1,15 @@
+         Technical Note: Synthetic Infrared Dataset Generation
+
+This synthetic infrared dataset is generated using a temperature range from 15°C to 40°C, representing a realistic long-wave IR scene. The background is assigned a cooler temperature of 20°C, while the moving object is assigned a warmer temperature of 35°C to create clear thermal contrast suitable for detection, segmentation, and generative model tasks.
+
+Since the dataset is synthetic, emissivity is approximated implicitly by assigning different temperature values to different regions. Real-world wavelength-dependent emissivity or blackbody radiance modeling is not used, but the temperature variation serves as a reasonable proxy for materials like human skin, equipment, or heated objects.
+
+The simulated sensor characteristics include a resolution of 256×256 pixels and an 8-bit grayscale range (0–255). Gaussian noise is added to mimic electronic readout noise or fixed-pattern noise, and Gaussian blur is applied to simulate optical diffusion, atmospheric attenuation, and imperfect focusing. A total of 30 infrared frames are generated.
+
+Temperature values are normalized using the full scene temperature range. Each temperature value is linearly mapped to an 8-bit grayscale intensity such that warmer regions appear brighter and cooler regions appear darker. This behavior aligns with typical long-wave infrared imaging systems.
+
+Several infrared and sensor-like effects are modeled in the dataset. Gaussian noise simulates electronic imperfections, Gaussian blur models atmospheric scattering and optical softness, and the warm object is moved diagonally across frames to create temporal variation. The warm object maintains consistent thermal contrast relative to the background throughout the sequence.
+
+The current approach has some limitations. Real emissivity behavior, radiometric modeling, wavelength-dependent absorption, and material-specific heat behavior are not represented. The background is uniform, only one moving object is included, and complex sensor artifacts such as dead pixels, banding, or quantization noise are not simulated. Dynamic heating or cooling effects are also not included.
+
+Future improvements can include multiple moving objects with different temperatures, emissivity-based modeling, physics-based radiance calculations, non-uniform backgrounds with thermal gradients, and more realistic sensor artifacts such as dead pixels and thermal streaks. Additional enhancements could simulate atmospheric absorption, environmental heat sources, and temporal heat dissipation to create more realistic IR sequences.

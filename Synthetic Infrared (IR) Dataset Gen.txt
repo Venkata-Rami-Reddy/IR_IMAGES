@@ -1,0 +1,72 @@
+Synthetic Infrared (IR) Dataset Generation
+
+This project generates a small synthetic infrared (IR) image dataset with realistic thermal and sensor-like characteristics. The goal is to simulate a cooler background, warmer moving objects, and temporal variation across multiple frames, along with IR sensor effects such as noise and blur.
+
+📌 Project Overview
+
+This repository contains:
+
+15–30 infrared frames (256×256, grayscale)
+
+Python script for dataset generation
+
+Technical Note explaining the modeling choices
+
+Generated IR frames folder
+
+Optional ZIP file for easy downloading
+
+The dataset simulates a moving warm object (e.g., human-like silhouette) against a cooler background with realistic IR noise and blur.
+
+🖼 Features of the Generated IR Dataset
+1. Thermal Characteristics
+
+Background temperature: 20°C
+
+Warmer object temperature: 35°C
+
+Scene temperature range: 15°C–40°C
+
+Linear mapping from temperature → 8-bit grayscale intensity
+
+2. Temporal Motion
+
+Object moves diagonally across frames
+
+Smooth linear movement across 15–30 frames
+
+3. IR Sensor Effects
+
+Gaussian noise for electronic/FPN noise
+
+Gaussian blur for atmospheric attenuation / optical diffusion
+
+8-bit grayscale simulating typical LWIR cameras
+
+📂 Repository Structure
+IR-Assignment/
+│
+├── ir_frames/
+│   ├── frame_001.png
+│   ├── frame_002.png
+│   ├── ...
+│   └── frame_015.png
+│
+├── generate_ir_dataset.py
+├── technical_note.docx / technical_note.pdf
+├── dataset.zip   (optional)
+└── README.md
+
+🧪 How to Run the Code
+1. Install Dependencies
+pip install numpy opencv-python
+
+2. Run the Script
+python generate_ir_dataset.py
+
+
+The generated frames will appear inside the ir_frames/ folder.
+
+📜 Technical Summary
+
+The dataset uses simple thermal modeling to represent emissivity-like behavior. Noise, blur, and 8-bit intensity scaling simulate a low-resolution thermal sensor. Limitations include lack of radiometric modeling, emissivity physics, or environmental temperature variation. Future improvements could add multiple objects, thermal decay curves, dead pixels, and realistic background textures.
